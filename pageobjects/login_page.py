@@ -1,6 +1,7 @@
 import time
 from selenium.webdriver.common.by import By
-from config import settings
+
+import settings
 from pageobjects.base_page import BasePage
 import allure
 
@@ -35,16 +36,16 @@ class LoginPage(BasePage):
 
     @allure.step
     def login_with_credentials(self, login, password):
-        self.open(settings.get("stage").url)
+        self.open(settings.get_url())
         self.type_to_elem(login_form_id, By.XPATH, login)
         self.type_to_elem(password_form_id, By.XPATH, password)
         self.click_elem(next_button_id, By.XPATH)
 
     @allure.step
     def login_to_cameraiq(self):
-        self.open(settings.get("stage").url)
-        self.type_to_elem(login_form_id, By.XPATH, settings.get("stage").login)
-        self.type_to_elem(password_form_id, By.XPATH, settings.get("stage").password)
+        self.open(settings.get_url())
+        self.type_to_elem(login_form_id, By.XPATH, settings.get_login())
+        self.type_to_elem(password_form_id, By.XPATH, settings.get_password())
         self.click_elem(next_button_id, By.XPATH)
 
     @allure.step
