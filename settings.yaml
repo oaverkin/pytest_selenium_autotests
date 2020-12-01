@@ -4,9 +4,9 @@ dev:
   password: "Testthis20020"
 stage:
   url: "https://stage.cameraiq.com"
-  login: "oaverkin@provectus.com"
-  password: "A!11edwsqa11"
+  login: "averkinoa@gmail.com"
+  password: "Testthis20020"
 prod:
   url: "https://app.cameraiq.com"
-  login: "oaverkin@provectus.com"
-  password: "A!11edwsqa11"
+  login: "averkinoa@gmail.com"
+  password: "Testthis20020"
