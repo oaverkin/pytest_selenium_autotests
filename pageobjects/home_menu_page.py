@@ -1,3 +1,4 @@
+from datetime import datetime
 
 import allure
 from selenium.common.exceptions import TimeoutException
@@ -7,14 +8,13 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class HomeMenu:
-    menu_templates = (By.XPATH, "//div[normalize-space(text()) = 'Templates']")
-    menu_projects = "//div[normalize-space(text()) = 'Projects']"
-    menu_publish_manager = "//div[normalize-space(text()) = 'Publish Manager']"
-    menu_resources = "//div[normalize-space(text()) = 'Resources']"
-    menu_settings = "//div[normalize-space(text()) = 'Settings']"
+    templates = (By.XPATH, "//div[normalize-space(text()) = 'Templates']")
+    projects = (By.XPATH, "//div[normalize-space(text()) = 'Projects']")
+    publish = (By.XPATH, "//div[normalize-space(text()) = 'Publish Manager']")
+    resources = (By.XPATH, "//div[normalize-space(text()) = 'Resources']")
+    settings = (By.XPATH, "//div[normalize-space(text()) = 'Settings']")
     logout_menu = (By.XPATH, "//div[@class='logout-control']")
     logout_button = (By.XPATH, "//button[contains(@class, 'btn-logout')]")
-    login_title = (By.XPATH, "//title[normalize-space(text()) = 'CameraIQ']")
 
     driver = None
 
@@ -26,10 +26,17 @@ class HomeMenu:
         WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(self.logout_menu)).click()
         WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.logout_button)).click()
 
+    @allure.step
+    def open_projects(self):
+        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(self.projects)).click()
+
+    @allure.step
     def at_page(self):
         try:
             elem = WebDriverWait(self.driver, 10) \
-                .until(EC.presence_of_element_located(self.menu_templates))
+                .until(EC.presence_of_element_located(self.templates))
             return elem.is_displayed()
         except TimeoutException:
             return False
+
+

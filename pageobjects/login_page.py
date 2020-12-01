@@ -13,9 +13,10 @@ class LoginPage:
     login_input = (By.XPATH, "//input[@name='email']")
     password_input = (By.XPATH, "//input[@name='password']")
     next_button = (By.XPATH, "//span[normalize-space(text()) = 'Next']")
-    login_error = "Invalid email or password"
-    login_error_message = "//span[text()='Invalid email or password']"
-    login_title = (By.XPATH, "//title[normalize-space(text()) = 'CameraIQ']")
+    forgot_password_link = (By.XPATH, "//a[normalize-space(text()) = 'Forgot Password?']")
+    reset_password_title = (By.XPATH, "//p[normalize-space(text()) = 'Reset password']")
+    forgot_email_link = (By.XPATH, "//a[normalize-space(text()) = 'Forgot Email?']")
+    reset_password_input = (By.XPATH, "//input[@type='email']")
 
     driver = None
 
@@ -49,6 +50,34 @@ class LoginPage:
             return elem.is_displayed()
         except TimeoutException:
             return False
+
+    @allure.step
+    def click_on_forgot_password_link(self):
+        self.driver.find_element(*self.forgot_password_link).click()
+
+    @allure.step
+    def forgot_password_link_is_displayed(self):
+        elem = WebDriverWait(self.driver, 10) \
+            .until(EC.presence_of_element_located(self.forgot_password_link))
+        return elem.is_displayed()
+
+    @allure.step
+    def reset_password_title_is_displayed(self):
+        elem = WebDriverWait(self.driver, 10) \
+            .until(EC.presence_of_element_located(self.reset_password_title))
+        return elem.is_displayed()
+
+    @allure.step
+    def forgot_email_link_is_displayed(self):
+        elem = WebDriverWait(self.driver, 10) \
+            .until(EC.presence_of_element_located(self.forgot_email_link))
+        return elem.is_displayed()
+
+    @allure.step
+    def reset_password_input_is_displayed(self):
+        elem = WebDriverWait(self.driver, 10) \
+            .until(EC.presence_of_element_located(self.reset_password_input))
+        return elem.is_displayed()
 
     @allure.step
     def open(self, url):
