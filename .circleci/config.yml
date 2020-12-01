@@ -14,7 +14,7 @@ jobs:
       - run:
           name: run tests
           command: |
-            pytest -n 3 --dist=loadscope -v --reruns 2 --alluredir  ./allure-results tests/test_login_page.py
+            pytest -n 3 --dist=loadscope -v --reruns 2 --alluredir  ./allure-results tests/
       - run:
           name: run report
           when: always
