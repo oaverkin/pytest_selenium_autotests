@@ -8,7 +8,7 @@ import allure
 from pageobjects.project_editor_page import ProjectEditor
 
 
-class TestLogin:
+class TestProjectEditor:
     title = "PROJECTS"
 
     def setup_method(self):
