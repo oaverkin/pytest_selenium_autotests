@@ -16,21 +16,18 @@ class TestLogin:
         self.login_page = LoginPage(self.driver)
         self.home_menu = HomeMenu(self.driver)
 
-    @pytest.mark.ui
     @allure.tag("login")
     @allure.title("Check title")
     def test_check_title(self):
         self.login_page.open(settings.get_url())
         assert self.login_page.get_title() == self.login_title
 
-    @pytest.mark.ui
     @allure.tag("login")
     @allure.title("Login with correct credentials")
     def test_login(self):
         self.login_page.login_to_cameraiq(settings.get_login(), settings.get_password())
         assert self.home_menu.at_page() is True
 
-    @pytest.mark.ui
     @allure.tag("login")
     @allure.title("Login with wrong password")
     def test_login_with_wrong_password(self):
@@ -39,7 +36,6 @@ class TestLogin:
         assert self.login_page.get_title() == self.login_title
         assert self.login_page.get_error_message("Invalid email or password") is True
 
-    @pytest.mark.ui
     @allure.tag("login")
     @allure.title("Login with wrong username")
     def test_login_with_wrong_username(self):
@@ -47,7 +43,6 @@ class TestLogin:
         assert self.login_page.get_title() == self.login_title
         assert self.login_page.get_error_message("Invalid email or password") is True
 
-    @pytest.mark.ui
     @allure.tag("login")
     @allure.title("Log out")
     def test_logout(self):
