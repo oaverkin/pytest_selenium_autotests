@@ -1,3 +1,5 @@
+import pytest
+
 import settings
 from pageobjects.home_menu_page import HomeMenu
 from pageobjects.login_page import LoginPage
@@ -26,6 +28,8 @@ class TestProjectEditor:
         assert self.project_editor.get_project_info() is True
         self.project_editor.delete_project()
 
+    @pytest.mark.xfail(reason="CIB-2936: Frontend: Project Editor: Project action window should be closed when user "
+                              "renamed project")
     @allure.tag("Project editor")
     @allure.title("Rename Project")
     def test_rename_project(self):
