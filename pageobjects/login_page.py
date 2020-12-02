@@ -10,13 +10,13 @@ import allure
 
 
 class LoginPage:
-    login_input = (By.XPATH, "//input[@name='email']")
-    password_input = (By.XPATH, "//input[@name='password']")
-    next_button = (By.XPATH, "//span[normalize-space(text()) = 'Next']")
-    forgot_password_link = (By.XPATH, "//a[normalize-space(text()) = 'Forgot Password?']")
-    reset_password_title = (By.XPATH, "//p[normalize-space(text()) = 'Reset password']")
-    forgot_email_link = (By.XPATH, "//a[normalize-space(text()) = 'Forgot Email?']")
-    reset_password_input = (By.XPATH, "//input[@type='email']")
+    LOGIN_INPUT = (By.XPATH, "//input[@name='email']")
+    PASSWORD_INPUT = (By.XPATH, "//input[@name='password']")
+    NEXT_BUTTON = (By.XPATH, "//span[normalize-space(text()) = 'Next']")
+    FORGOT_PASSWORD_LINK = (By.XPATH, "//a[normalize-space(text()) = 'Forgot Password?']")
+    RESET_PASSWORD_TITLE = (By.XPATH, "//p[normalize-space(text()) = 'Reset password']")
+    FORGOT_EMAIL_LINK = (By.XPATH, "//a[normalize-space(text()) = 'Forgot Email?']")
+    RESET_PASSWORD_INPUT = (By.XPATH, "//input[@type='email']")
 
     driver = None
 
@@ -38,45 +38,45 @@ class LoginPage:
     @allure.step
     def login_to_cameraiq(self, login=None, password=None):
         self.open(settings.get_url())
-        self.driver.find_element(*self.login_input).send_keys(login)
-        self.driver.find_element(*self.password_input).send_keys(password)
-        self.driver.find_element(*self.next_button).click()
+        self.driver.find_element(*self.LOGIN_INPUT).send_keys(login)
+        self.driver.find_element(*self.PASSWORD_INPUT).send_keys(password)
+        self.driver.find_element(*self.NEXT_BUTTON).click()
 
     @allure.step
     def at_page(self):
         try:
             elem = WebDriverWait(self.driver, 10) \
-                .until(EC.presence_of_element_located(self.login_input))
+                .until(EC.presence_of_element_located(self.LOGIN_INPUT))
             return elem.is_displayed()
         except TimeoutException:
             return False
 
     @allure.step
     def click_on_forgot_password_link(self):
-        self.driver.find_element(*self.forgot_password_link).click()
+        self.driver.find_element(*self.FORGOT_PASSWORD_LINK).click()
 
     @allure.step
     def forgot_password_link_is_displayed(self):
         elem = WebDriverWait(self.driver, 10) \
-            .until(EC.presence_of_element_located(self.forgot_password_link))
+            .until(EC.presence_of_element_located(self.FORGOT_PASSWORD_LINK))
         return elem.is_displayed()
 
     @allure.step
     def reset_password_title_is_displayed(self):
         elem = WebDriverWait(self.driver, 10) \
-            .until(EC.presence_of_element_located(self.reset_password_title))
+            .until(EC.presence_of_element_located(self.RESET_PASSWORD_TITLE))
         return elem.is_displayed()
 
     @allure.step
     def forgot_email_link_is_displayed(self):
         elem = WebDriverWait(self.driver, 10) \
-            .until(EC.presence_of_element_located(self.forgot_email_link))
+            .until(EC.presence_of_element_located(self.FORGOT_EMAIL_LINK))
         return elem.is_displayed()
 
     @allure.step
     def reset_password_input_is_displayed(self):
         elem = WebDriverWait(self.driver, 10) \
-            .until(EC.presence_of_element_located(self.reset_password_input))
+            .until(EC.presence_of_element_located(self.RESET_PASSWORD_INPUT))
         return elem.is_displayed()
 
     @allure.step

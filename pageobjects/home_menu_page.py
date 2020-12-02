@@ -1,5 +1,3 @@
-from datetime import datetime
-
 import allure
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
@@ -38,5 +36,3 @@ class HomeMenu:
             return elem.is_displayed()
         except TimeoutException:
             return False
-
-
