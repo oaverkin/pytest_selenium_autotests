@@ -129,3 +129,4 @@ dmypy.json
 allure-report/
 
 .idea
+/test-results/
