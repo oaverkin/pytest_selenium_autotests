@@ -24,3 +24,5 @@ jobs:
           path: allure-report
           destination: allure-report
           when: always
+      - store_test_results:
+          path:
