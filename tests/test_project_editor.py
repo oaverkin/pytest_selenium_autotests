@@ -32,7 +32,6 @@ class TestProjectEditor:
         self.project_editor.click_create_project()
         self.project_editor.click_project_action_button()
         self.project_editor.click_rename_project()
-        assert self.project_editor.get_project_info() is True
 
     def teardown_method(self):
         self.driver.close()
