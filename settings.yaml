@@ -1,12 +1,12 @@
 dev:
-  url: "https://dev.cameraiq.com/"
-  login: "averkinoa@gmail.com"
-  password: "Testthis20020"
+  url: "https://test.com/"
+  login: "test@gmail.com"
+  password: "test"
 stage:
-  url: "https://stage.cameraiq.com"
-  login: "averkinoa@gmail.com"
-  password: "Testthis20020"
+  url: "https://stage.test.com"
+  login: "test@gmail.com"
+  password: "testthis"
 prod:
-  url: "https://app.cameraiq.com"
-  login: "averkinoa@gmail.com"
-  password: "Testthis20020"
+  url: "https://app.test.com"
+  login: "test@gmail.com"
+  password: "testthis"
